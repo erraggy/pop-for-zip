@@ -1,0 +1,2 @@
+class CbsaToMsa < ApplicationRecord
+end
