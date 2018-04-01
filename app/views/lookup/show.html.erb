@@ -1,0 +1,16 @@
+<div>
+  <%= flash[:notice] %>
+  <h3>Results</h3>
+  <dl>
+    <dt>Zip:</dt>
+    <dd><%= @result[:Zip] %></dd>
+    <dt>CBSA:</dt>
+    <dd><%= @result[:CBSA] %></dd>
+    <dt>MSA:</dt>
+    <dd><%= @result[:MSA] %></dd>
+    <dt>Pop2015:</dt>
+    <dd><%= number_with_delimiter(@result[:Pop2015]) %></dd>
+    <dt>Pop2014:</dt>
+    <dd><%= number_with_delimiter(@result[:Pop2014]) %></dd>
+  </dl>
+</div>

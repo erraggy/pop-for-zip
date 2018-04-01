@@ -1,0 +1,18 @@
+<div>
+  <%= flash[:notice] %>
+  <h3>Lookup population data by Zip code</h3>
+  <%= form_tag("/lookup/show", method: "get", :enforce_utf8 => false) do %>
+    <%= label_tag(:zip, "5 digit Zip code:") %>
+    <%= text_field_tag(:zip) %>
+    <%= submit_tag "Lookup", name: nil %>
+  <% end %>
+  <br/>
+  <hr/>
+  <h3>(Re)Load fresh data from s3</h3>
+  <%= form_tag("/zip_to_cbsa/reload", method: "post") do %>
+    <%= submit_tag("Load ZIP to CBSA") %>
+  <% end %>
+  <%= form_tag("/cbsa_to_msa/reload", method: "post") do %>
+    <%= submit_tag("Load CBSA to MSA") %>
+  <% end %>
+</div>
