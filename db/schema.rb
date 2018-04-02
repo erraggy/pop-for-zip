@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(version: 20180402005941) do
     t.string "lsad", limit: 40, null: false
     t.integer "popestimate2014", null: false
     t.integer "popestimate2015", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["cbsa"], name: "index_cbsa_to_msas_on_cbsa"
     t.index ["lsad"], name: "index_cbsa_to_msas_on_lsad"
     t.index ["mdiv"], name: "index_cbsa_to_msas_on_mdiv"
@@ -34,8 +32,6 @@ ActiveRecord::Schema.define(version: 20180402005941) do
     t.string "status", limit: 10, default: "UPDATING", null: false
     t.integer "total_records", default: 0, null: false
     t.integer "records_processed", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["name"], name: "index_reload_tasks_on_name", unique: true
     t.index ["status"], name: "index_reload_tasks_on_status"
   end
@@ -47,8 +43,6 @@ ActiveRecord::Schema.define(version: 20180402005941) do
     t.decimal "bus_ratio", precision: 10, scale: 9, null: false
     t.decimal "oth_ratio", precision: 10, scale: 9, null: false
     t.decimal "tot_ratio", precision: 10, scale: 9, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["zip"], name: "index_zip_to_cbsas_on_zip"
   end
 
