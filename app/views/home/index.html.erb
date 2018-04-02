@@ -20,6 +20,7 @@
       <b>Status:</b> <em><%= @result['zip_to_cbsa'][:status] %></em>
     </div>
     <div title="Refresh page to update...">
+      <!--Currently hard-coded the total number of zip_to_cbsa records as the IO line counter fails for this file-->
       <em>Processed <b><%= number_with_delimiter(@result['zip_to_cbsa'][:records_processed]) %></b> records out of a total of <b>46,633</b></em>
     </div>
   <% end %>
