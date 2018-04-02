@@ -20,7 +20,7 @@
       <b>Status:</b> <em><%= @result['zip_to_cbsa'][:status] %></em>
     </div>
     <div title="Refresh page to update...">
-      <em>Processed <b><%= @result['zip_to_cbsa'][:records_processed] %></b> records out of a total of <b><%= @result['zip_to_cbsa'][:total_records] %></b></em>
+      <em>Processed <b><%= number_with_delimiter(@result['zip_to_cbsa'][:records_processed]) %></b> records out of a total of <b>46,633</b></em>
     </div>
   <% end %>
   </blockquote>
@@ -35,7 +35,7 @@
       <b>Status:</b> <em><%= @result['cbsa_to_msa'][:status] %></em>
     </div>
     <div title="Refresh page to update...">
-      <em>Processed <b><%= @result['cbsa_to_msa'][:records_processed] %></b> records out of a total of <b><%= @result['cbsa_to_msa'][:total_records] %></b></em>
+      <em>Processed <b><%= number_with_delimiter(@result['cbsa_to_msa'][:records_processed]) %></b> records out of a total of <b><%= number_with_delimiter(@result['cbsa_to_msa'][:total_records]) %></b></em>
     </div>
   <% end %>
   </blockquote>

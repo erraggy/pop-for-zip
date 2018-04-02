@@ -21,7 +21,7 @@ class CbsaToMsa < ApplicationRecord
       ReloadTask.update_status(@@name, total_records, processed_records)
 
       csv_io.rewind
-      batch, batch_size = [], 1000
+      batch, batch_size = [], 100
       CSV.new(csv_io, headers: @@full_headers).each do |row|
         if row[:CBSA].to_s.empty?
           next
