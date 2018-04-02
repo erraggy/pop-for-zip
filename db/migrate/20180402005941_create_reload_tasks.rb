@@ -6,8 +6,6 @@ class CreateReloadTasks < ActiveRecord::Migration[5.1]
       t.string :status, :limit => 10, :null => false, :default => "UPDATING"
       t.integer :total_records, :null => false, :default => 0
       t.integer :records_processed, :null => false, :default => 0
-
-      t.timestamps
     end
 
     # Add our indexes

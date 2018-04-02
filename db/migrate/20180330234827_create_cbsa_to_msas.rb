@@ -7,8 +7,6 @@ class CreateCbsaToMsas < ActiveRecord::Migration[5.1]
       t.column "lsad", :string, :limit => 40, :null => false, :index => true
       t.column "popestimate2014", :integer, :null => false
       t.column "popestimate2015", :integer, :null => false
-
-      t.timestamps
     end
   end
 
