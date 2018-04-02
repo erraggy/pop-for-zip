@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330234827) do
+ActiveRecord::Schema.define(version: 20180402005941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,19 @@ ActiveRecord::Schema.define(version: 20180330234827) do
     t.index ["mdiv"], name: "index_cbsa_to_msas_on_mdiv"
   end
 
+  create_table "reload_tasks", force: :cascade do |t|
+    t.string "name", limit: 15, null: false
+    t.string "status", limit: 10, default: "UPDATING", null: false
+    t.integer "total_records", default: 0, null: false
+    t.integer "records_processed", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_reload_tasks_on_name", unique: true
+    t.index ["status"], name: "index_reload_tasks_on_status"
+  end
+
   create_table "zip_to_cbsas", id: false, force: :cascade do |t|
-    t.string "zip", limit: 5, null: false
+    t.string "zip", limit: 10, null: false
     t.integer "cbsa", null: false
     t.decimal "res_ratio", precision: 10, scale: 9, null: false
     t.decimal "bus_ratio", precision: 10, scale: 9, null: false

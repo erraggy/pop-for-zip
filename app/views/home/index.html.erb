@@ -9,10 +9,30 @@
   <br/>
   <hr/>
   <h3>(Re)Load fresh data from s3</h3>
-  <%= form_tag("/zip_to_cbsa/reload", method: "post") do %>
-    <%= submit_tag("Load ZIP to CBSA") %>
+  <h4>Zip code to CBSA</h4>
+  <% if @result['zip_to_cbsa'][:status] == 'COMPLETE' %>
+    <%= form_tag("/zip_to_cbsa/reload", method: "post") do %>
+      <%= submit_tag("Load ZIP to CBSA", remote: true) %>
+    <% end %>
+  <% else %>
+    <div>
+      <b>Status:</b> <em><%= @result['zip_to_cbsa'][:status] %></em>
+    </div>
+    <div>
+      <em>Processed <b><%= @result['zip_to_cbsa'][:records_processed] %></b> records out of a total of <b><%= @result['zip_to_cbsa'][:total_records] %></b></em>
+    </div>
   <% end %>
-  <%= form_tag("/cbsa_to_msa/reload", method: "post") do %>
-    <%= submit_tag("Load CBSA to MSA") %>
+  <h4>CBSA to MSA</h4>
+  <% if @result['cbsa_to_msa'][:status] == 'COMPLETE' %>
+    <%= form_tag("/cbsa_to_msa/reload", method: "post") do %>
+      <%= submit_tag("Load CBSA to MSA", remote: true) %>
+    <% end %>
+  <% else %>
+    <div>
+      <b>Status:</b> <em><%= @result['cbsa_to_msa'][:status] %></em>
+    </div>
+    <div>
+      <em>Processed <b><%= @result['cbsa_to_msa'][:records_processed] %></b> records out of a total of <b><%= @result['cbsa_to_msa'][:total_records] %></b></em>
+    </div>
   <% end %>
 </div>
