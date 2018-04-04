@@ -26,7 +26,7 @@ class ZipToCbsa < ApplicationRecord
         if row[:ZIP].to_s.empty?
           next
         end
-        batch << ZipToCbsa.create(:zip => row[:ZIP], :cbsa => row[:CBSA], :res_ratio => row[:RES_RATIO], :bus_ratio => row[:BUS_RATIO], :oth_ratio => row[:OTH_RATIO], :tot_ratio => row[:TOT_RATIO])
+        batch << ZipToCbsa.new(:zip => row[:ZIP], :cbsa => row[:CBSA], :res_ratio => row[:RES_RATIO], :bus_ratio => row[:BUS_RATIO], :oth_ratio => row[:OTH_RATIO], :tot_ratio => row[:TOT_RATIO])
 
         current_batch_size = batch.length
         if current_batch_size >= batch_size
@@ -36,7 +36,7 @@ class ZipToCbsa < ApplicationRecord
           batch = []
         end
       end
-      ZipToCbsa.import batch
+      ZipToCbsa.import batch, timestamps: false
       processed_records += batch.length
       ReloadTask.update_status(@@name, processed_records, processed_records, 'COMPLETE')
     end

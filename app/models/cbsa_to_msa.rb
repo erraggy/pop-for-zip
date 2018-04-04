@@ -26,7 +26,7 @@ class CbsaToMsa < ApplicationRecord
         if row[:CBSA].to_s.empty?
           next
         end
-        batch << CbsaToMsa.create(:cbsa => row[:CBSA], :mdiv => row[:MDIV], :name => row[:NAME], :lsad => row[:LSAD], :popestimate2014 => row[:POPESTIMATE2014], :popestimate2015 => row[:POPESTIMATE2015])
+        batch << CbsaToMsa.new(:cbsa => row[:CBSA], :mdiv => row[:MDIV], :name => row[:NAME], :lsad => row[:LSAD], :popestimate2014 => row[:POPESTIMATE2014], :popestimate2015 => row[:POPESTIMATE2015])
 
         current_batch_size = batch.length
         if current_batch_size >= batch_size
@@ -36,7 +36,7 @@ class CbsaToMsa < ApplicationRecord
           batch = []
         end
       end
-      CbsaToMsa.import batch
+      CbsaToMsa.import batch, timestamps: false
       processed_records += batch.length
       ReloadTask.update_status(@@name, processed_records, processed_records, 'COMPLETE')
     end
