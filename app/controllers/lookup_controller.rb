@@ -19,5 +19,10 @@ class LookupController < ApplicationController
       @result[:Pop2015] = lookup_row[:popestimate2015]
       @result[:Pop2014] = lookup_row[:popestimate2014]
     end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @result }
+    end
   end
 end
