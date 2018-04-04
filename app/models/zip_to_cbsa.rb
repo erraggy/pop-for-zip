@@ -36,7 +36,7 @@ class ZipToCbsa < ApplicationRecord
           batch = []
         end
       end
-      ZipToCbsa.import batch, timestamps: false
+      ZipToCbsa.import batch
       processed_records += batch.length
       ReloadTask.update_status(@@name, processed_records, processed_records, 'COMPLETE')
     end
